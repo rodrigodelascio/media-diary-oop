@@ -29,5 +29,13 @@ public abstract class MediaEntry implements Summarisable {
         return purpose;
     }
 
+    public void setEmotionalResponse(String response) {
+        this.emotionalResponse = response;
+    }
+
+    public void setDuration(int minutes) {
+        this.duration = minutes;
+    }
+
     public abstract String getSummary();
 }

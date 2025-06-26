@@ -25,4 +25,9 @@ public class User {
     public String generateSummary() {
         return name + " has " + diaries.size() + " diary(ies).";
     }
+
+    public List<MediaDiary> getDiaries() {
+    return diaries;
+}
+
 }

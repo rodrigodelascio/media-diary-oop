@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class MediaDiary implements Summarisable {
     private int diaryId;
@@ -30,6 +32,18 @@ public class MediaDiary implements Summarisable {
 
     public int getTotalTimeSpent() {
         return TimeTracker.sumDurations(entries);
+    }
+
+    public List<MediaEntry> getAllEntries() {
+        return entries;
+    }
+
+    public Set<String> getAvailableDays() {
+    Set<String> days = new HashSet<>();
+    for (MediaEntry e : entries) {
+        days.add(e.getDay());
+    }
+    return days;
     }
 
     @Override

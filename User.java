@@ -30,4 +30,11 @@ public class User {
     return diaries;
 }
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

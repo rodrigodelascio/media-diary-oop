@@ -60,8 +60,8 @@ public class Main {
                         System.out.println("3. View Entries by Day");
                         System.out.println("4. Remove Entry by ID");
                         System.out.println("5. View Weekly Summary");
-                        System.out.println("6. Back to Main Menu");
-                        System.out.println("7. Compare Two Users by Purpose");
+                        System.out.println("6. Compare Two Users by Purpose");
+                        System.out.println("7. Back to Main Menu");
                         System.out.print("Choose an option: ");
                         int option = scanner.nextInt();
                         scanner.nextLine();
@@ -212,9 +212,6 @@ public class Main {
                                 System.out.println("Most Active Day: " + mostActiveDay);
                                 break;
                             case 6:
-                                userMenu = false;
-                                break;
-                            case 7:
                                 if (users.size() < 2) {
                                     System.out.println("At least two users are required for comparison.");
                                     break;
@@ -243,6 +240,9 @@ public class Main {
 
                                 MediaComparer comparer = new CompareByPurpose(comparePurpose);
                                 comparer.compare(user1, user2);
+                                break;
+                            case 7:
+                                userMenu = false;
                                 break;
 
                             default:

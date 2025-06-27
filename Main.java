@@ -61,6 +61,7 @@ public class Main {
                         System.out.println("4. Remove Entry by ID");
                         System.out.println("5. View Weekly Summary");
                         System.out.println("6. Back to Main Menu");
+                        System.out.println("7. Compare Two Users by Purpose");
                         System.out.print("Choose an option: ");
                         int option = scanner.nextInt();
                         scanner.nextLine();
@@ -213,6 +214,37 @@ public class Main {
                             case 6:
                                 userMenu = false;
                                 break;
+                            case 7:
+                                if (users.size() < 2) {
+                                    System.out.println("At least two users are required for comparison.");
+                                    break;
+                                }
+                                System.out.println("Available Users:");
+                                for (User u : users) {
+                                    System.out.println("ID: " + u.getUserId() + " - " + u.getName());
+                                }
+                                System.out.print("Enter ID of first user: ");
+                                int id1 = scanner.nextInt();
+                                scanner.nextLine();
+                                System.out.print("Enter ID of second user: ");
+                                int id2 = scanner.nextInt();
+                                scanner.nextLine();
+
+                                User user1 = users.stream().filter(u -> u.getUserId() == id1).findFirst().orElse(null);
+                                User user2 = users.stream().filter(u -> u.getUserId() == id2).findFirst().orElse(null);
+
+                                if (user1 == null || user2 == null || user1 == user2) {
+                                    System.out.println("Invalid user selection.");
+                                    break;
+                                }
+
+                                System.out.print("Enter purpose to compare (e.g., Education, Entertainment): ");
+                                String comparePurpose = scanner.nextLine();
+
+                                MediaComparer comparer = new CompareByPurpose(comparePurpose);
+                                comparer.compare(user1, user2);
+                                break;
+
                             default:
                                 System.out.println("Invalid option. Try again.");
                         }
